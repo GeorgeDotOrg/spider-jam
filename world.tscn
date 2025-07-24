@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dtdf4412i53gd"]
 
 [ext_resource type="PackedScene" uid="uid://sqqugs0fa44s" path="res://train-car1.tscn" id="1_f3sb7"]
-[ext_resource type="PackedScene" uid="uid://cf234v5j4l3tm" path="res://player.tscn" id="2_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://cf234v5j4l3tm" path="res://player/player.tscn" id="2_fj7yv"]
 
 [node name="World" type="Node3D"]
 

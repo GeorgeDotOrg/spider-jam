@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://cf234v5j4l3tm"]
+
+[ext_resource type="Script" uid="uid://c5ecq5mv8haaf" path="res://player/player.gd" id="1_4flbx"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
+radius = 0.25
+height = 1.75
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
+radius = 0.25
+height = 1.75
+
+[sub_resource type="Animation" id="Animation_oul6g"]
+resource_name = "walk_cycle"
+loop_mode = 2
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.5, 0, 0.9, 1, 0, 0.4, 0)
+
+[sub_resource type="Animation" id="Animation_rkbax"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rkbax"]
+_data = {
+&"RESET": SubResource("Animation_rkbax"),
+&"walk_cycle": SubResource("Animation_oul6g")
+}
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_4flbx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_sh265")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_sh265")
+
+[node name="Camera" type="Camera3D" parent="."]
+current = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Camera")
+libraries = {
+&"": SubResource("AnimationLibrary_rkbax")
+}
